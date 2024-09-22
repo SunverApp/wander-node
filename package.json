@@ -1,0 +1,47 @@
+{
+    "name": "wander-node",
+    "description": "A WanderApp Node.js client library by Sunver",
+    "version": "0.0.1",
+    "author": "Sunver",
+    "license": "MIT",
+    "repository": {
+        "type": "git",
+        "url": "git://github.com/SunverApp/wander-node.git"
+    },
+    "engines": {
+        "node": ">=12.0"
+    },
+    "dependencies": {
+        "@types/node": ">=12.0",
+        "axios": "^1.7.4"
+    },
+    "devDependencies": {
+        "@eslint/js": "^9.10.0",
+        "@typescript-eslint/eslint-plugin": "^5.6.0",
+        "@typescript-eslint/parser": "^5.6.0",
+        "eslint-plugin-eslint-comments": "^3.2.0",
+        "eslint-plugin-import": "^2.25.4",
+        "eslint-plugin-promise": "^6.0.0",
+        "eslint-config-airbnb-typescript": "^16.1.0",
+        "eslint": "^8.57.1",
+        "eslint-config-prettier": "^8.5.0",
+        "globals": "^15.9.0",
+        "prettier": "^2.5.1",
+        "typescript": "^4.5.3",
+        "typescript-eslint": "^8.6.0"
+    },
+    "files": [
+        "LICENSE",
+        "README.md"
+    ],
+    "main": "dist/index.js",
+    "types": "dist/index.d.ts",
+    "scripts": {
+        "build": "tsc -p tsconfig.json",
+        "clean": "rm -rf dist/*",
+        "lint": "eslint .",
+        "lint:fix": "eslint --fix .",
+        "format": "prettier --check .",
+        "format:fix": "prettier --write ."
+    }
+}
