@@ -1,25 +1,28 @@
 import { Wander } from '../../src'
 import 'dotenv/config'
 
-;(async () => {
+async function main(): Promise<void> {
   const wander = new Wander({
-    clientId: process.env.WANDER_CLIENT_ID,
-    clientSecret: process.env.WANDER_CLIENT_SECRET,
+    accessToken: process.env.WANDER_ACCESS_TOKEN,
   })
-
-  const success = await wander.login()
-
-  if (!success) {
-    return
-  }
 
   const places = await wander.getEvents({
-    eventCategoryNames: ['musique'],
-    placeProximity: {
-      lng: 2,
-      lat: 48,
-      maxDistanceInKm: 5,
+    eventCategoryNames: ['expo'],
+    locationFilter: {
+      circle: {
+        centerLat: 48.866667,
+        centerLng: 2.333333,
+        maxDistanceInKm: 50,
+      },
     },
   })
-  console.log(places)
-})()
+
+  for (const place of places) {
+    console.log('\n')
+    console.log(place.id)
+    console.log(place.name)
+    console.log(place.image)
+  }
+}
+
+void main()
