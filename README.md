@@ -1,1 +1,1 @@
-wander-node: A node wrapper for the WanderApp API
+# wander-node: A NodeJS wrapper for the WanderApp API
