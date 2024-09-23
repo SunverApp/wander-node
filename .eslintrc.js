@@ -21,6 +21,5 @@ module.exports = exports = {
     rules: {
         eqeqeq: 'error',
         '@typescript-eslint/lines-between-class-members': 'off',
-        'react/jsx-filename-extension': 'off',
     },
 };
