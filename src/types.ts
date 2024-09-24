@@ -142,6 +142,25 @@ type Source = {
   notAvailable: string | null
 }
 
+type PlaceCompleteEvent = {
+  id: number
+  name: string
+  address: Address
+  image: string | null
+  squareImage: string | null
+  rectangleImage: string | null
+  isCertified: boolean
+  score: number
+  averageGrade: number | null
+}
+
+type Commentaries = {
+  grade: number
+  content: string | null
+  username: string
+  date: string
+}
+
 export type CompleteEvent = {
   id: number
   name: string
@@ -157,10 +176,10 @@ export type CompleteEvent = {
   webImage: string | null
   notAvailable: string | null
   cancelled: string | null
-  place: object
+  place: PlaceCompleteEvent
   sources: Source[]
   categories: EventCategory[]
-  commentaries: object
+  commentaries: Commentaries[]
   averageGrade: number | null
   nbOfGrades: number
   performers: Performer[]
