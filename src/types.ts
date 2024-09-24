@@ -268,6 +268,7 @@ export type GetEventsOptions = {
 }
 
 export type SearchEventsResult = {
-  events: EventForSearch[]
-  place: Place
+  event: EventForSearch | null
+  place: Place | null
+  performer: Performer | null
 }[]
