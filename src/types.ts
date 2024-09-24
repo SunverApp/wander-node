@@ -266,3 +266,8 @@ export type GetEventsOptions = {
     centerLat: number
   }
 }
+
+export type SearchEventsResult = {
+  events: EventForSearch[]
+  place: Place
+}[]

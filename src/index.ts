@@ -1,6 +1,6 @@
 import axios, { AxiosInstance } from 'axios'
 
-import { CompleteEvent, Event, GetEventsOptions } from './types'
+import { CompleteEvent, Event, GetEventsOptions, SearchEventsResult } from './types'
 
 export * from './types'
 
@@ -121,6 +121,21 @@ export class Wander {
     } catch (e) {
       console.error(e)
       return null
+    }
+  }
+
+  async search(
+    searchInput: string,
+    coordinates: { lat: number; lng: number }
+  ): Promise<SearchEventsResult[]> {
+    try {
+      const response = await this.api.get(
+        `/search?searchInput=${searchInput}&coordinates=${coordinates.lat}&coordinates=${coordinates.lng}`
+      )
+      return response.data
+    } catch (e) {
+      console.error(e)
+      return []
     }
   }
 }
