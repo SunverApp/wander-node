@@ -242,3 +242,27 @@ export type Performer = {
   rectangleImage: string | null
   webImage: string | null
 }
+
+export type GetEventsOptions = {
+  eventCategoryNames: EventCategoryName[]
+  locationFilter: {
+    circle: {
+      centerLng: number
+      centerLat: number
+      maxDistanceInKm: number
+    }
+  }
+  datesFilter?: {
+    minDate: string
+    maxDate: string
+  }
+  lowestPrice?: number
+  highestPrice?: number
+  limit?: number
+  pageNb?: number
+  orderBy?: 'date' | 'updatedAt' | 'price' | 'distanceToPlace'
+  orderByDistanceToPlace?: {
+    centerLng: number
+    centerLat: number
+  }
+}
