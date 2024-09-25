@@ -1,6 +1,6 @@
 import axios, { AxiosInstance } from 'axios'
 
-import { Event, EventCategoryName } from './types'
+import { CompleteEvent, Event, GetEventsOptions, SearchEventsResult } from './types'
 
 export * from './types'
 
@@ -87,29 +87,7 @@ export class Wander {
     pageNb,
     orderBy,
     orderByDistanceToPlace,
-  }: {
-    eventCategoryNames: EventCategoryName[]
-    locationFilter: {
-      circle: {
-        centerLng: number
-        centerLat: number
-        maxDistanceInKm: number
-      }
-    }
-    datesFilter?: {
-      minDate: string
-      maxDate: string
-    }
-    lowestPrice?: number
-    highestPrice?: number
-    limit?: number
-    pageNb?: number
-    orderBy?: 'date' | 'updatedAt' | 'price' | 'distanceToPlace'
-    orderByDistanceToPlace?: {
-      centerLng: number
-      centerLat: number
-    }
-  }): Promise<Event[]> {
+  }: GetEventsOptions): Promise<Event[]> {
     try {
       const response = await this.api.post('/get/events', {
         eventCategoryNames,
@@ -128,6 +106,32 @@ export class Wander {
         orderByDistanceToPlace,
       })
 
+      return response.data
+    } catch (e) {
+      console.error(e)
+      return []
+    }
+  }
+
+  async getEvent(id: number): Promise<CompleteEvent | null> {
+    try {
+      const response = await this.api.get(`/event/${id}`)
+
+      return response.data
+    } catch (e) {
+      console.error(e)
+      return null
+    }
+  }
+
+  async search(
+    searchInput: string,
+    coordinates: { lat: number; lng: number }
+  ): Promise<SearchEventsResult[]> {
+    try {
+      const response = await this.api.get(
+        `/search?searchInput=${searchInput}&coordinates=${coordinates.lat}&coordinates=${coordinates.lng}`
+      )
       return response.data
     } catch (e) {
       console.error(e)
