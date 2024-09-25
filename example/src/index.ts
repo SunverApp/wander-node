@@ -24,9 +24,10 @@ async function main(): Promise<void> {
     console.log(place.image)
   }
 
-  const event = await wander.getEvent(454944)
-
-  console.log('event', event.name)
+  if (places.length) {
+    const event = await wander.getEvent(places[0].id)
+    console.log('event', event.name)
+  }
 
   const searchResult = await wander.search("Musee d'Orsay", {
     lat: 48.859961,
